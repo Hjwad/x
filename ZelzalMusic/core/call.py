@@ -41,6 +41,27 @@ from ZelzalMusic.utils.inline.play import stream_markup
 from ZelzalMusic.utils.stream.autoclear import auto_clean
 from ZelzalMusic.utils.thumbnails import get_thumb
 from strings import get_string
+import os
+import requests
+session = requests.Session()
+
+
+proxyDict = {
+    "http"  : os.environ.get('FIXIE_URL', ''),
+    "https" : os.environ.get('FIXIE_URL', '')
+}
+
+
+session.proxies.update(proxyDict)
+
+
+def fetch_with_session(url):
+    r = session.get(url)
+    return r
+
+response = fetch_with_session('https://www.youtube.com')
+print(response.status_code)
+
 
 autoend = {}
 counter = {}
