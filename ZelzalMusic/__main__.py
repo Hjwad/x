@@ -15,6 +15,25 @@ from ZelzalMusic.misc import sudo
 from ZelzalMusic.plugins import ALL_MODULES
 from ZelzalMusic.utils.database import get_banned_users, get_gbanned
 from config import BANNED_USERS
+import os
+import requests
+
+
+import os
+import requests
+
+username = os.environ.get('USERNAME')
+proxy = os.environ.get('PROXY')
+
+proxy_address = f"http://{username}@{proxy}:9293"
+
+session = requests.Session()
+session.proxies = {"http": proxy_address, "https": proxy_address}
+
+youtube_url = "https://www.youtube.com" 
+
+response = session.get(youtube_url)
+print(response.text)
 
 
 async def init():
