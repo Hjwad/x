@@ -26,6 +26,8 @@ from ZelzalMusic.utils.logger import play_logs
 from ZelzalMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 import os, requests
+from quota_guard import configure_quota_guard
+configure_quota_guard()
 proxyDict = {
               "http"  : os.environ.get('FIXIE_URL', ''),
               "https" : os.environ.get('FIXIE_URL', '')
