@@ -14,7 +14,12 @@ from youtubesearchpython.__future__ import VideosSearch
 
 from ZelzalMusic.utils.database import is_on_off
 from ZelzalMusic.utils.formatters import time_to_seconds
-
+import os, requests
+proxyDict = {
+              "http"  : os.environ.get('FIXIE_URL', ''),
+              "https" : os.environ.get('FIXIE_URL', '')
+            }
+r = requests.get('https://www.youtube.com', proxies=proxyDict)
 
 async def shell_cmd(cmd):
     proc = await asyncio.create_subprocess_shell(
