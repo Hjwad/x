@@ -22,17 +22,13 @@ import requests
 import os
 import requests
 
-username = os.environ.get('USERNAME')
-proxy = os.environ.get('PROXY')
 
-proxy_address = f"http://{username}@{proxy}:9293"
+quota_guard_url = os.environ.get('QUOTAGUARDSHIELD_URL')
 
 session = requests.Session()
-session.proxies = {"http": proxy_address, "https": proxy_address}
+session.proxies = {"http": quota_guard_url, "https": quota_guard_url}
 
-youtube_url = "https://www.youtube.com" 
-
-response = session.get(youtube_url)
+response = session.get(quota_guard_url)
 print(response.text)
 
 
