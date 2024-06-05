@@ -74,7 +74,7 @@ async def play_commnd(
     url,
     fplay,
 ):
-session = requests.Session()
+    session = requests.Session()
     session.proxies.update(proxyDict)
     if not await check_is_joined(message):
         return
