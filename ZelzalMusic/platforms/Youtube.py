@@ -15,6 +15,8 @@ from youtubesearchpython.__future__ import VideosSearch
 from ZelzalMusic.utils.database import is_on_off
 from ZelzalMusic.utils.formatters import time_to_seconds
 import os, requests
+from quota_guard import configure_quota_guard
+configure_quota_guard()
 proxyDict = {
               "http"  : os.environ.get('FIXIE_URL', ''),
               "https" : os.environ.get('FIXIE_URL', '')
