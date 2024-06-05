@@ -13,7 +13,7 @@ from pyrogram.errors import (
 )
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from ZelzalMusic import YouTubeAPI, app
+from ZelzalMusic import YouTubeAPI, app, YouTube
 from ZelzalMusic.misc import SUDOERS
 from ZelzalMusic.utils.database import (
     get_assistant,
