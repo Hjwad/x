@@ -43,24 +43,12 @@ from ZelzalMusic.utils.thumbnails import get_thumb
 from strings import get_string
 import os
 import requests
-session = requests.Session()
-
-
+import os, requests
 proxyDict = {
-    "http"  : os.environ.get('FIXIE_URL', ''),
-    "https" : os.environ.get('FIXIE_URL', '')
-}
-
-
-session.proxies.update(proxyDict)
-
-
-def fetch_with_session(url):
-    r = session.get(url)
-    return r
-
-response = fetch_with_session('https://www.youtube.com')
-print(response.status_code)
+              "http"  : os.environ.get('FIXIE_URL', ''),
+              "https" : os.environ.get('FIXIE_URL', '')
+            }
+r = requests.get('https://www.youtube.com', proxies=proxyDict)
 
 
 autoend = {}
