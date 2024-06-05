@@ -19,19 +19,6 @@ import os
 import requests
 
 
-import os
-import requests
-
-
-quota_guard_url = os.environ.get('QUOTAGUARDSHIELD_URL')
-
-session = requests.Session()
-session.proxies = {"http": quota_guard_url, "https": quota_guard_url}
-
-response = session.get(quota_guard_url)
-print(response.text)
-
-
 async def init():
     if (
         not config.STRING1
