@@ -60,10 +60,10 @@ async def exists(self, link: str, videoid: Union[bool, str] = None):
     else:
         return False
 
-    async def url(self, message_1: Message) -> Union[str, None]:
-        messages = [message_1]
-        if message_1.reply_to_message:
-            messages.append(message_1.reply_to_message)
+    async def url(self, message):
+        messages = [message]
+        if message.reply_to_message:
+            messages.append(message.reply_to_message)
         text = ""
         offset = None
         length = None
@@ -80,10 +80,9 @@ async def exists(self, link: str, videoid: Union[bool, str] = None):
                 for entity in message.caption_entities:
                     if entity.type == MessageEntityType.TEXT_LINK:
                         return entity.url
-        if offset in (None,):
+        if offset is None:
             return None
         return text[offset : offset + length]
-        response = await self.session.get(link)
 
     async def details(self, link: str, videoid: Union[bool, str] = None):
         if videoid:
