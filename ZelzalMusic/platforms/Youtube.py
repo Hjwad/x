@@ -51,7 +51,7 @@ class YouTubeAPI:
         self.session.proxies.update(self.proxyDict)
 
 
-    async def exists(self, link: str, videoid: Union[bool, str] = None):
+async def exists(self, link: str, videoid: Union[bool, str] = None):
     if videoid:
         link = self.base + link
     if re.search(self.regex, link):
