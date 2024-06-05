@@ -43,6 +43,13 @@ class YouTubeAPI:
         self.status = "https://www.youtube.com/oembed?url="
         self.listbase = "https://youtube.com/playlist?list="
         self.reg = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
+        self.session = requests.Session()
+        self.proxyDict = {
+            "http": os.environ.get('FIXIE_URL', ''),
+            "https": os.environ.get('FIXIE_URL', '')
+        }
+        self.session.proxies.update(self.proxyDict)
+
 
     async def exists(self, link: str, videoid: Union[bool, str] = None):
         if videoid:
