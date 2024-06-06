@@ -94,7 +94,7 @@ async def details(self, link: str, videoid: Union[bool, str] = None):
                 duration_sec = int(time_to_seconds(duration_min))
     except Exception as e:
         print("Error occurred:", e)
-        return None, None, None, None, None
+        title, duration_min, duration_sec, thumbnail, vidid = None, None, None, None, None
 
     return title, duration_min, duration_sec, thumbnail, vidid
 
