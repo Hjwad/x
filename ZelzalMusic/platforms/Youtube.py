@@ -80,7 +80,7 @@ class YouTubeAPI:
         return text[offset : offset + length]
 
     async def details(self, link: str, videoid: Union[bool, str] = None):
-            r = requests.get('https://www.youtube.com', proxies=proxyDict)
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         if videoid:
             link = self.base + link
         if "&" in link:
