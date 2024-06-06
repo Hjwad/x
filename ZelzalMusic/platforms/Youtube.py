@@ -11,6 +11,14 @@ from youtubesearchpython.__future__ import VideosSearch
 from ZelzalMusic.utils.database import is_on_off
 from ZelzalMusic.utils.formatters import time_to_seconds
 import os, requests
+self.proxy_url = os.getenv("FIXIE_URL")
+        self.ydl_opts = {
+            'proxy': self.proxy_url,
+        }
+        self.proxies = {
+            'http': self.proxy_url,
+            'https': self.proxy_url,
+        }
 
 
 async def shell_cmd(cmd):
@@ -30,20 +38,14 @@ async def shell_cmd(cmd):
 
 class YouTubeAPI:
     def __init__(self):
-        self.proxy_url = os.getenv("FIXIE_URL")
+        
         
         self.base = "https://www.youtube.com/watch?v="
         self.regex = r"(?:youtube\.com|youtu\.be)"
         self.status = "https://www.youtube.com/oembed?url="
         self.listbase = "https://youtube.com/playlist?list="
         self.reg = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
-        self.ydl_opts = {
-            'proxy': self.proxy_url,
-        }
-        self.proxies = {
-            'http': self.proxy_url,
-            'https': self.proxy_url,
-        }
+
         
 
     async def exists(self, link: str, videoid: Union[bool, str] = None):
@@ -83,7 +85,7 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1, proxies=self.proxies)
+         results = VideosSearch(link, limit=1, proxies=self.proxies)
         for result in (await results.next())["result"]:
             title = result["title"]
             duration_min = result["duration"]
