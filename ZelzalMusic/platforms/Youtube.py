@@ -12,7 +12,7 @@ from ZelzalMusic.utils.database import is_on_off
 from ZelzalMusic.utils.formatters import time_to_seconds
 import os, requests
 
-proxy_url = os.getenv("FIXIE_URL")
+proxy_url = os.getenv("QUOTAGUARDSHIELD_URL")
 
 ydl_opts = {
     'proxy': proxy_url,
@@ -84,7 +84,7 @@ class YouTubeAPI:
         return text[offset : offset + length]
 
     async def details(self, link: str, videoid: Union[bool, str] = None):
-        proxy_url = os.getenv("FIXIE_URL")
+        proxy_url = os.getenv("QUOTAGUARDSHIELD_URL")
         proxies = {'http': proxy_url, 'https': proxy_url}
 
         if videoid:
