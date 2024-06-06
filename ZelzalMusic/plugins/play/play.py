@@ -26,10 +26,6 @@ from ZelzalMusic.utils.logger import play_logs
 from ZelzalMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 import os, requests
-proxyDict = {
-    "http": os.environ.get('FIXIE_URL', ''),
-    "https": os.environ.get('FIXIE_URL', '')
-}
 
 force_btn = InlineKeyboardMarkup(
     [
@@ -74,7 +70,6 @@ async def play_commnd(
     url,
     fplay,
 ):
-    r = requests.get('https://www.youtube.com', proxies=proxyDict)
     if not await check_is_joined(message):
         return
     mystic = await message.reply_text(
