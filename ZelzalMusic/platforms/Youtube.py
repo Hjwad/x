@@ -88,7 +88,7 @@ async def details(self, link: str, videoid: Union[bool, str] = None):
         link = self.base + link
     if "&" in link:
         link = link.split("&")[0]
-    results = VideosSearch(link, limit=1, proxies=self.proxies)
+    results = VideosSearch(link, limit=1, proxies=proxies)
     for result in (await results.next())["result"]:
         title = result["title"]
         duration_min = result["duration"]
