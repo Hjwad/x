@@ -81,16 +81,21 @@ async def details(self, link: str, videoid: Union[bool, str] = None):
         link = self.base + link
     if "&" in link:
         link = link.split("&")[0]
-    results = VideosSearch(link, limit=1, proxies=proxies)
-    for result in (await results.next())["result"]:
-        title = result["title"]
-        duration_min = result["duration"]
-        thumbnail = result["thumbnails"][0]["url"].split("?")[0]
-        vidid = result["id"]
-        if str(duration_min) == "None":
-            duration_sec = 0
-        else:
-            duration_sec = int(time_to_seconds(duration_min))
+    try:
+        results = VideosSearch(link, limit=1, proxies=proxies)
+        for result in (await results.next())["result"]:
+            title = result["title"]
+            duration_min = result["duration"]
+            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
+            vidid = result["id"]
+            if str(duration_min) == "None":
+                duration_sec = 0
+            else:
+                duration_sec = int(time_to_seconds(duration_min))
+    except Exception as e:
+        print("Error occurred:", e)
+        return None, None, None, None, None
+
     return title, duration_min, duration_sec, thumbnail, vidid
 
     async def title(self, link: str, videoid: Union[bool, str] = None):
