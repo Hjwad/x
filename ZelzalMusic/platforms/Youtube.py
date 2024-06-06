@@ -55,6 +55,7 @@ class YouTubeAPI:
             return False
 
     async def url(self, message_1: Message) -> Union[str, None]:
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         messages = [message_1]
         if message_1.reply_to_message:
             messages.append(message_1.reply_to_message)
