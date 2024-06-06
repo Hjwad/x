@@ -73,28 +73,25 @@ class YouTubeAPI:
 
 import yt_dlp
 
-async def details(self, link: str, videoid: Union[bool, str] = None):
+    async def details(self, link: str, videoid: Union[bool, str] = None):
+        proxy_url = os.getenv("QUOTAGUARD_URL")
+        proxies = {'http': proxy_url, 'https': proxy_url}
 
-    proxy_url = os.getenv("QUOTAGUARD_URL")
-    ydl_opts = {
-        'proxy': proxy_url,
-    }
-
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         if videoid:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        info = ydl.extract_info(link, download=False)
-        title = info.get('title', '')
-        duration_min = info.get('duration', '')
-        thumbnail = info.get('thumbnail', '')
-        vidid = info.get('id', '')
-        if str(duration_min) == "None":
-            duration_sec = 0
-        else:
-            duration_sec = int(time_to_seconds(duration_min))
-    return title, duration_min, duration_sec, thumbnail, vidid
+        results = VideosSearch(link, limit=1, proxies=proxies)
+        for result in (await results.next())["result"]:
+            title = result["title"]
+            duration_min = result["duration"]
+            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
+            vidid = result["id"]
+            if str(duration_min) == "None":
+                duration_sec = 0
+            else:
+                duration_sec = int(time_to_seconds(duration_min))
+        return title, duration_min, duration_sec, thumbnail, vidid
 
     async def title(self, link: str, videoid: Union[bool, str] = None):
         if videoid:
