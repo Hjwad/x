@@ -98,7 +98,7 @@ class YouTubeAPI:
         return title, duration_min, duration_sec, thumbnail, vidid
 
     async def title(self, link: str, videoid: Union[bool, str] = None):
-            r = requests.get('https://www.youtube.com', proxies=proxyDict)
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         if videoid:
             link = self.base + link
         if "&" in link:
@@ -109,7 +109,7 @@ class YouTubeAPI:
         return title
 
     async def duration(self, link: str, videoid: Union[bool, str] = None):
-            r = requests.get('https://www.youtube.com', proxies=proxyDict)
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         if videoid:
             link = self.base + link
         if "&" in link:
@@ -120,7 +120,7 @@ class YouTubeAPI:
         return duration
 
     async def thumbnail(self, link: str, videoid: Union[bool, str] = None):
-            r = requests.get('https://www.youtube.com', proxies=proxyDict)
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         if videoid:
             link = self.base + link
         if "&" in link:
@@ -131,7 +131,7 @@ class YouTubeAPI:
         return thumbnail
 
     async def video(self, link: str, videoid: Union[bool, str] = None):
-            r = requests.get('https://www.youtube.com', proxies=proxyDict)
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         if videoid:
             link = self.base + link
         if "&" in link:
@@ -152,7 +152,7 @@ class YouTubeAPI:
             return 0, stderr.decode()
 
     async def playlist(self, link, limit, user_id, videoid: Union[bool, str] = None):
-            r = requests.get('https://www.youtube.com', proxies=proxyDict)
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         if videoid:
             link = self.listbase + link
         if "&" in link:
@@ -170,7 +170,7 @@ class YouTubeAPI:
         return result
 
     async def track(self, link: str, videoid: Union[bool, str] = None):
-            r = requests.get('https://www.youtube.com', proxies=proxyDict)
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         if videoid:
             link = self.base + link
         if "&" in link:
@@ -192,7 +192,7 @@ class YouTubeAPI:
         return track_details, vidid
 
     async def formats(self, link: str, videoid: Union[bool, str] = None):
-            r = requests.get('https://www.youtube.com', proxies=proxyDict)
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         if videoid:
             link = self.base + link
         if "&" in link:
