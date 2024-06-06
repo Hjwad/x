@@ -44,11 +44,6 @@ from strings import get_string
 import os
 import requests
 import os, requests
-proxyDict = {
-              "http"  : os.environ.get('FIXIE_URL', ''),
-              "https" : os.environ.get('FIXIE_URL', '')
-            }
-r = requests.get('https://www.youtube.com', proxies=proxyDict)
 
 
 autoend = {}
