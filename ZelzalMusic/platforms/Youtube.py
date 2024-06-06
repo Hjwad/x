@@ -11,11 +11,11 @@ from youtubesearchpython.__future__ import VideosSearch
 from ZelzalMusic.utils.database import is_on_off
 from ZelzalMusic.utils.formatters import time_to_seconds
 import os, requests
-self.proxy_url = os.getenv("FIXIE_URL")
+       self.proxy_url = os.getenv("FIXIE_URL")
         self.ydl_opts = {
             'proxy': self.proxy_url,
         }
-        self.proxies = {
+         self.proxies = {
             'http': self.proxy_url,
             'https': self.proxy_url,
         }
