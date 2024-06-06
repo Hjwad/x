@@ -46,7 +46,7 @@ class YouTubeAPI:
         self.reg = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
 
     async def exists(self, link: str, videoid: Union[bool, str] = None):
-            r = requests.get('https://www.youtube.com', proxies=proxyDict)
+        r = requests.get('https://www.youtube.com', proxies=proxyDict)
         if videoid:
             link = self.base + link
         if re.search(self.regex, link):
