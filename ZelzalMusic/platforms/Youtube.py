@@ -83,7 +83,7 @@ class YouTubeAPI:
             return None
         return text[offset : offset + length]
 
-async def details(self, link: str, videoid: Union[bool, str] = None):
+async def details(self, link: str, proxies: dict, videoid: Union[bool, str] = None):
     if videoid:
         link = self.base + link
     if "&" in link:
