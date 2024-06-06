@@ -12,13 +12,15 @@ from ZelzalMusic.utils.database import is_on_off
 from ZelzalMusic.utils.formatters import time_to_seconds
 import os, requests
 
-self.proxy_url = os.getenv("FIXIE_URL")
-self.ydl_opts = {
-    'proxy': self.proxy_url,
+proxy_url = os.getenv("FIXIE_URL")
+
+ydl_opts = {
+    'proxy': proxy_url,
 }
-self.proxies = {
-    'http': self.proxy_url,
-    'https': self.proxy_url,
+
+proxies = {
+    'http': proxy_url,
+    'https': proxy_url,
 }
 
 
