@@ -52,6 +52,6 @@ reply_markup=InlineKeyboardMarkup(
                     await app.send_message(OWNER_ID, f"الواد {message.from_user.mention} دا بينادي عليك \n\n الايدي بتاعه : {sender_id} \n\n اسمه : {sender_name}")
                     if await is_on_off(config.LOG):
                        return await app.send_message(
-                           config.LOG_GROUP_ID,
+                           config.LOGGER_ID,
                            f"الواد {message.from_user.mention} دا بينادي عليك \n\n الايدي بتاعه : {sender_id} \n\n اسمه : {sender_name}",
                        )                    
