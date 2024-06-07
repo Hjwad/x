@@ -27,9 +27,8 @@ load_dotenv()
 OWNER_ID = getenv("OWNER_ID")
 OWNER_ID = int(getenv("OWNER_ID", ""))
 
-@app.on_message(
-    command(["المطور","صاحب البوت"])
-    & ~filters.group
+
+@app.on_message(command(["السورس", "المطور", "البرمجه"]))
 )
 async def zohary(client: Client, message: Message):
     logging.debug('بدء تنفيذ الأمر المطور')
