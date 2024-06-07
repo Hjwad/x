@@ -29,7 +29,6 @@ OWNER_ID = int(getenv("OWNER_ID", ""))
 
 
 @app.on_message(command(["السورس", "المطور", "البرمجه"]))
-)
 async def zohary(client: Client, message: Message):
     logging.debug('بدء تنفيذ الأمر المطور')
     usr = await client.get_users(OWNER_ID)
