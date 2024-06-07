@@ -73,7 +73,7 @@ class YouTubeAPI:
 
 import yt_dlp
 
-    async def details(self, link: str, videoid: Union[bool, str] = None):
+async def details(self, link: str, videoid: Union[bool, str] = None):
         if videoid:
             link = self.base + link
         if "&" in link:
