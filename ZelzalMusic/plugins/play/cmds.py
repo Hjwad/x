@@ -44,45 +44,6 @@ async def zdatsr(client: Client, message: Message):
             ]
         ),
     )
-@app.on_message(filters.command(["مطور", "المطور"]) & filters.group)
-async def zilzal(client: Client, message: Message):
-    usr = await client.get_users(OWNER_ID)
-    name = usr.first_name
-    usrnam = usr.username
-    
-    photos = await client.get_profile_photos(OWNER_ID, limit=1)
-    if photos:
-        photo = photos[0]
-        await message.reply_photo(photo.file_id, caption=f"""ٴ<b>•────‌‌‏✯ ᴇ_ᴍᴜsɪᴄ ✯──‌‌‏─‌‌‏─•</b>
-                    
-- المطور :[{usr.first_name}](https://t.me/{usrnam})
-- اليوزر :@{usrnam} 
-- الايدي :`{usr.id}`
- 
-ٴ<b>•────‌‌‏✯ ᴇ_ᴍᴜsɪᴄ ✯──‌‌‏─‌‌‏─•</b> """, 
-reply_markup=InlineKeyboardMarkup(
-          [               
-            [            
-              InlineKeyboardButton(name, url=f"https://t.me/{usrnam}"),
-            ],[
-              InlineKeyboardButton("•SoS Music•", url="https://t.me/mmmsc"),
-            ],
-          ] 
-       )                 
-    )
-    
-    sender_id = message.from_user.id
-    sender_name = message.from_user.first_name
-    senderuser = message.from_user.username
-    sender_user = f"@{senderuser}" if senderuser else "لا يوجـد"
-    
-    await app.send_message(OWNER_ID, f"- المستخـدم {message.from_user.mention} يناديـك \n\n- الاسـم : {sender_name} \n- الايـدي : {sender_id}\n- اليـوزر : {sender_user}")
-    await app.send_message(LOGGER_ID, f"- المستخـدم {message.from_user.mention} يناديـك \n\n- الاسـم : {sender_name} \n- الايـدي : {sender_id}\n- اليـوزر : {sender_user}")
 
-# تعديل تشغيل التطبيق لاستخدام الحلقة الحالية
-loop = asyncio.get_event_loop()
 
-if not loop.is_running():
-    loop.run_until_complete(app.start())
-else:
-    app.start()
+
