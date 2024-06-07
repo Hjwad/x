@@ -8,7 +8,7 @@ from pyrogram.types import InlineKeyboardButton
 import re
 import sys
 from os import getenv
-from config import BANNED_USERS, MUSIC_BOT_NAME
+from config import BANNED_USERS
 from dotenv import load_dotenv
 from pyrogram import filters
 import config
