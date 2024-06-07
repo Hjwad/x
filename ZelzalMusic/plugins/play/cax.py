@@ -1,3 +1,14 @@
+import asyncio
+import os
+import requests
+import pyrogram
+from pyrogram import Client, filters, emoji
+from strings.filters import command
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
+from pyrogram.errors import MessageNotModified
+from ZelzalMusic import app
+from config import OWNER_ID, LOGGER_ID
+
 @app.on_message(command(["مطور", "المطور"]) & filters.group)
 async def zilzal(client: Client, message: Message):
     usr = await client.get_users(OWNER_ID)
