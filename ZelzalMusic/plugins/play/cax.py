@@ -16,7 +16,7 @@ from ZelzalMusic.utils.database import (add_served_chat,
                                        add_served_user,
                                        blacklisted_chats,
                                        get_assistant, get_lang,
-                                       get_userss, is_on_off,
+                                       is_on_off,
                                        is_served_private_chat)
 
 load_dotenv()
