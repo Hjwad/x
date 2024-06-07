@@ -73,16 +73,12 @@ class YouTubeAPI:
 
 import yt_dlp
 
-async def details(self, link: str, videoid: Union[bool, str] = None):
-    proxy_url = os.getenv("QUOTAGUARD_URL")
-    proxies = {'http': proxy_url, 'https': proxy_url}
-
-    if videoid:
-        link = self.base + link
-    if "&" in link:
-        link = link.split("&")[0]
-    try:
-        results = VideosSearch(link, limit=1, proxies=proxies)
+    async def details(self, link: str, videoid: Union[bool, str] = None):
+        if videoid:
+            link = self.base + link
+        if "&" in link:
+            link = link.split("&")[0]
+        results = VideosSearch(link, limit=1)
         for result in (await results.next())["result"]:
             title = result["title"]
             duration_min = result["duration"]
@@ -92,11 +88,7 @@ async def details(self, link: str, videoid: Union[bool, str] = None):
                 duration_sec = 0
             else:
                 duration_sec = int(time_to_seconds(duration_min))
-    except Exception as e:
-        print("Error occurred:", e)
-        title, duration_min, duration_sec, thumbnail, vidid = None, None, None, None, None
-
-    return title, duration_min, duration_sec, thumbnail, vidid
+        return title, duration_min, duration_sec, thumbnail, vidid
 
     async def title(self, link: str, videoid: Union[bool, str] = None):
         if videoid:
