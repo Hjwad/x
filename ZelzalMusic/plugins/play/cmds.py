@@ -54,7 +54,7 @@ async def zilzal(client: Client, message: Message):
     async for photo in client.iter_profile_photos(OWNER_ID, limit=1):
                     await message.reply_photo(photo.file_id,       caption=f"""ٴ<b>•────‌‌‏✯ ᴇ_ᴍᴜsɪᴄ ✯──‌‌‏─‌‌‏─•</b>
                     
-- المطور :[{usr.first_name}](https://t.me/{OWNER})
+- المطور :[{usr.first_name}](https://t.me/{OWNER_id})
 - اليوزر :@{usrnam} 
 - الايدي :`{usr.id}`
  
