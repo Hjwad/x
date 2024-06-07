@@ -26,7 +26,7 @@ OWNER_ID = int(getenv("OWNER_ID", ""))
 
 @app.on_message(
     command(["المطور","صاحب البوت"])
-    & ~filters.edited
+    & ~filters.group
 )
 async def zohary(client: Client, message: Message):
     usr = await client.get_users(OWNER_ID)
