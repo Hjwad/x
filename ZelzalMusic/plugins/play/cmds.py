@@ -44,9 +44,6 @@ async def zdatsr(client: Client, message: Message):
             ]
         ),
     )
-    
-app = Client("my_account")  # تأكد من تهيئة كائن Client بشكل صحيح
-
 @app.on_message(filters.command(["مطور", "المطور"]) & filters.group)
 async def zilzal(client: Client, message: Message):
     usr = await client.get_users(OWNER_ID)
@@ -82,4 +79,10 @@ reply_markup=InlineKeyboardMarkup(
     await app.send_message(OWNER_ID, f"- المستخـدم {message.from_user.mention} يناديـك \n\n- الاسـم : {sender_name} \n- الايـدي : {sender_id}\n- اليـوزر : {sender_user}")
     await app.send_message(LOGGER_ID, f"- المستخـدم {message.from_user.mention} يناديـك \n\n- الاسـم : {sender_name} \n- الايـدي : {sender_id}\n- اليـوزر : {sender_user}")
 
-app.run()
+# تعديل تشغيل التطبيق لاستخدام الحلقة الحالية
+loop = asyncio.get_event_loop()
+
+if not loop.is_running():
+    loop.run_until_complete(app.start())
+else:
+    app.start()
