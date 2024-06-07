@@ -44,8 +44,8 @@ async def zdatsr(client: Client, message: Message):
             ]
         ),
     )
-
-
+    
+app = Client("my_account")  # تأكد من تهيئة كائن Client بشكل صحيح
 
 @app.on_message(filters.command(["مطور", "المطور"]) & filters.group)
 async def zilzal(client: Client, message: Message):
@@ -66,7 +66,7 @@ async def zilzal(client: Client, message: Message):
 reply_markup=InlineKeyboardMarkup(
           [               
             [            
-              InlineKeyboardButton (name, url=f"https://t.me/{usrnam}"),
+              InlineKeyboardButton(name, url=f"https://t.me/{usrnam}"),
             ],[
               InlineKeyboardButton("•SoS Music•", url="https://t.me/mmmsc"),
             ],
@@ -81,3 +81,5 @@ reply_markup=InlineKeyboardMarkup(
     
     await app.send_message(OWNER_ID, f"- المستخـدم {message.from_user.mention} يناديـك \n\n- الاسـم : {sender_name} \n- الايـدي : {sender_id}\n- اليـوزر : {sender_user}")
     await app.send_message(LOGGER_ID, f"- المستخـدم {message.from_user.mention} يناديـك \n\n- الاسـم : {sender_name} \n- الايـدي : {sender_id}\n- اليـوزر : {sender_user}")
+
+app.run()
