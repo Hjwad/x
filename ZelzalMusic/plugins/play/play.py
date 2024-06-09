@@ -27,24 +27,6 @@ from ZelzalMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 import os, requests
 
-force_btn = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton(   
-              text=f"link Friends .", url=f"t.me/https://t.me/LinkXFrend",)                        
-        ],        
-    ]
-)
-async def check_is_joined(message):    
-    try:
-        userid = message.from_user.id
-        user_name = message.from_user.first_name
-        status = await app.get_chat_member("LinkXFrend", userid)
-        return True
-    except Exception:
-        await message.reply_text(f'┇عزيزي: {message.from_user.mention}\n┇أشتࢪك في قناة البوت أولاً.\n┇قناة البوت: @LinkXFrend 🍓. ',reply_markup=force_btn,disable_web_page_preview=False)
-        return False
-
 
 @app.on_message(command(["شغل","تشغيل"])
     & filters.group
@@ -70,8 +52,6 @@ async def play_commnd(
     url,
     fplay,
 ):
-    if not await check_is_joined(message):
-        return
     mystic = await message.reply_text(
         _["play_2"].format(channel) if channel else _["play_1"]
     )
