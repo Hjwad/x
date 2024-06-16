@@ -48,14 +48,6 @@
             "required": true
         }
     },
-    "buildpacks": [
-        {
-            "url": "scalingo/python"
-        },
-        {
-            "url": "scalingo/nodejs"
-        }
-    ],
     "formation": {
         "worker": {
             "quantity": 1,
