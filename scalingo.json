@@ -50,13 +50,10 @@
     },
     "buildpacks": [
         {
-            "url": "heroku/python"
+            "url": "scalingo/python"
         },
         {
-            "url": "heroku/nodejs"
-        },
-        {
-            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+            "url": "scalingo/nodejs"
         }
     ],
     "formation": {
