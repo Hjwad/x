@@ -50,7 +50,7 @@ def song(client, message):
         m.delete()
     except Exception as e:
         m.edit(
-            f"[Victorious](t.me/mmmsc) 💕**\n\**خطأ :** {e}"
+            f"[Victorious] **\n\**خطأ :** {e}"
         )
         print(e)
 
